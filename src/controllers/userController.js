@@ -58,8 +58,8 @@ const UserController = {
       res.status(200).json({
         message: 'Login exitoso',
         user: {
-          ...userWithoutPassword,  // Todos los datos del usuario excepto la contraseña
-          profile_picture: result.user.profile_picture  // Agregar explícitamente el link de la imagen de perfil
+          ...userWithoutPassword,  
+          profile_picture: result.user.profile_picture  
         },
         token: result.token  // El token JWT
       });
