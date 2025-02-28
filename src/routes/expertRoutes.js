@@ -9,5 +9,6 @@ router.post('/experts', ExpertController.createExpert);
 router.put('/experts/:id', ExpertController.updateExpert);
 router.delete('/experts/:id', ExpertController.deleteExpert);
 router.get('/experts/search', ExpertController.searchExperts);
+router.post('/experts/login', ExpertController.login);
 
 module.exports = router;

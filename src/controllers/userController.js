@@ -51,8 +51,6 @@ const UserController = {
     const { email, password } = req.body;
     try {
       const result = await UserService.login(email, password);
-
-      // Excluye la contraseña de la respuesta
       const { password: _password, ...userWithoutPassword } = result.user;
 
       res.status(200).json({
@@ -61,7 +59,7 @@ const UserController = {
           ...userWithoutPassword,  
           profile_picture: result.user.profile_picture  
         },
-        token: result.token  // El token JWT
+        token: result.token  
       });
     } catch (error) {
       console.error('Error en login:', error);
