@@ -62,6 +62,25 @@ const ExpertModel = {
     `;
     const searchTerm = `%${query}%`; // Permite búsqueda parcial
     db.query(sql, [searchTerm, searchTerm], callback);
+  },
+
+  getAll: (callback) => {
+    const sql = 'SELECT * FROM experts';
+    db.query(sql, callback);
+  },
+
+  getById: (id, callback) => {
+    const sql = 'SELECT * FROM experts WHERE id = ?';
+    db.query(sql, [id], (err, results) => {
+      if (err) {
+        return callback(err);
+      }
+      if (results.length > 0) {
+        return callback(null, results[0]); // Retorna solo el primer resultado
+      } else {
+        return callback(null, null); // No se encontró el experto
+      }
+    });
   }
 };
 

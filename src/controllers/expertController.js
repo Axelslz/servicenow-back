@@ -74,6 +74,25 @@ const ExpertController = {
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
+  },
+
+  getAllExperts: async (req, res) => {
+    try {
+      const experts = await ExpertService.getAllExperts();
+      res.status(200).json({ experts });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  },
+
+  getExpertById: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const expert = await ExpertService.getExpertById(id);
+      res.status(200).json({ expert });
+    } catch (error) {
+      res.status(404).json({ message: error.message });
+    }
   }
 };
 

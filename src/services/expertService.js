@@ -48,6 +48,33 @@ const ExpertService = {
         resolve(results);
       });
     });
+  },
+
+  getAllExperts: async () => {
+    return new Promise((resolve, reject) => {
+      ExpertModel.getAll((err, results) => {
+        if (err) {
+          console.error('Error al obtener expertos:', err);
+          return reject(new Error('Error al obtener la lista de expertos'));
+        }
+        resolve(results);
+      });
+    });
+  },
+
+  getExpertById: async (id) => {
+    return new Promise((resolve, reject) => {
+      ExpertModel.getById(id, (err, result) => {
+        if (err) {
+          console.error('Error al obtener el experto:', err);
+          return reject(new Error('Error al obtener el experto'));
+        }
+        if (!result) {
+          return reject(new Error('Experto no encontrado'));
+        }
+        resolve(result);
+      });
+    });
   }
 };
 
