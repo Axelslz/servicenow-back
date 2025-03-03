@@ -5,5 +5,6 @@ const ExpertController = require('../controllers/expertController');
 router.post('/experts', ExpertController.register);
 router.post('/experts/login', ExpertController.login);
 router.put('/update/:id', ExpertController.updateExpert);
+router.get('/experts/search', ExpertController.search);
 
 module.exports = router;

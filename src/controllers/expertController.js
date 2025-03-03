@@ -60,6 +60,20 @@ const ExpertController = {
     } catch (error) {
       res.status(500).json({ message: `Error al actualizar el experto: ${error.message}` });
     }
+  },
+
+  search: async (req, res) => {
+    try {
+      const { query } = req.query; // Obtiene el parámetro de búsqueda
+      if (!query) {
+        return res.status(400).json({ message: 'Debe proporcionar un término de búsqueda' });
+      }
+      
+      const results = await ExpertService.searchExperts(query);
+      res.status(200).json({ experts: results });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
   }
 };
 

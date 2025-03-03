@@ -37,6 +37,18 @@ const ExpertService = {
       });
     });
   },
+
+  searchExperts: async (query) => {
+    return new Promise((resolve, reject) => {
+      ExpertModel.searchByNameOrOccupation(query, (err, results) => {
+        if (err) {
+          console.error('Error en la búsqueda:', err);
+          return reject(new Error('Error en la búsqueda de expertos'));
+        }
+        resolve(results);
+      });
+    });
+  }
 };
 
 module.exports = ExpertService;

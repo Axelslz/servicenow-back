@@ -55,6 +55,14 @@ const ExpertModel = {
       callback(null, results.length > 0 ? results[0] : null);
     });
   },
+  searchByNameOrOccupation: (query, callback) => {
+    const sql = `
+      SELECT * FROM experts
+      WHERE name LIKE ? OR ocupation LIKE ?;
+    `;
+    const searchTerm = `%${query}%`; // Permite búsqueda parcial
+    db.query(sql, [searchTerm, searchTerm], callback);
+  }
 };
 
 module.exports = ExpertModel;
