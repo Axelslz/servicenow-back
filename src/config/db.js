@@ -1,17 +1,17 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-  host: 'localhost',       
-  user: 'root',            
-  password: '',            
-  database: 'back-servicenow',  
-  port: 3306              
+  host: 'localhost',
+  user: 'root',
+  password: 'mymysql',
+  database: 'back_servicenow',
+  port: 3607
 });
 
 connection.connect((err) => {
   if (err) {
     console.error('Error connecting to the database:', err);
-    throw err; 
+    throw err;
   }
   console.log('Connected to the database');
 });
