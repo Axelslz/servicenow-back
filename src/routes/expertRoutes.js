@@ -1,14 +1,9 @@
 const express = require('express');
+const router = express.Router();
 const ExpertController = require('../controllers/expertController');
 
-const router = express.Router();
-
-router.get('/experts', ExpertController.getAllExperts);
-router.get('/experts/:id', ExpertController.getExpertById);
-router.post('/experts', ExpertController.createExpert);
-router.put('/experts/:id', ExpertController.updateExpert);
-router.delete('/experts/:id', ExpertController.deleteExpert);
-router.get('/experts/search', ExpertController.searchExperts);
+router.post('/experts', ExpertController.register);
 router.post('/experts/login', ExpertController.login);
+router.put('/update/:id', ExpertController.updateExpert);
 
 module.exports = router;
